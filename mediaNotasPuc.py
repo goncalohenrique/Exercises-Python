@@ -10,7 +10,7 @@ media =  (nota1 + nota2 + nota3 + nota4) / 4
 if (nota1 < 0 or nota1 > 10) or (nota2 < 0 or nota2 > 10) or (nota3 < 0 or nota3 > 10) or (nota4 < 0 or nota4 > 10):
     print("Nota inválida. As notas devem estar entre 0 e 10.")
     exit()
-else: # Verifica se as notas estão dentro do intervalo válido
+else: 
 
     # Verifica a situação do aluno
     if media >= 7:
