@@ -1,38 +1,40 @@
 import random
 
 def adicionarValRandoms(matriz):
-    for i in range(9):
-        modelo = random.choice("Calça", "Camisa", "Blusa", "Shorts", "Casaco", "Jaqueta")
-        if modelo == "Calça":
-            preco = random.uniform(50, 200)
-        elif modelo == "Camisa":
-            preco = random.uniform(30, 150)
-        elif modelo == "Blusa":
-            preco = random.uniform(20, 100)
-        elif modelo == "Shorts":
-            preco = random.uniform(25, 80)
-        elif modelo == "Casaco":
-            preco = random.uniform(80, 300)
-        elif modelo == "Jaqueta":
-            preco = random.uniform(100, 400)
-        matriz[i].append(f"Modelo: {modelo}, Preço: R${preco:.2f}")
-        for j in range(i, 9):
-            if modelo=="Camisa" or "Blusa" or  "Casaco" or "Jaqueta":
-                tamanho = random.choice("P", "M", "G", "GG", "XG")
-                matriz[i][j] = tamanho
+    modelos_roupa = ["Calça", "Camisa", "Blusa", "Shorts", "Casaco", "Jaqueta"]
+    tamanhos_roupa = ["P", "M", "G", "GG", "XG"]
+    for i in range(10):
+        for j in range(10):
+            if i == 0:
+                if j == 0:
+                    matriz[i][j] = "Tamanho"
+                else:
+                    modelo = random.choice(modelos_roupa)
+                    matriz[0][j] = modelo
             else:
-                tamanho= random.randint(15, 30)
-                matriz[i][j] = tamanho
+                if j == 0:
+                    if modelo == "Camisa" or  "Blusa" or"Casaco" or "Jaqueta":
+                        tamanho = random.choice(tamanhos_roupa)
+                        matriz[i][0] = tamanho
+                    else:
+                        tamanho = random.randint(15, 30)
+                        matriz[i][0] = tamanho
+                else:
+                    preco = random.uniform(100, 400)
+                    matriz[i][j] = round(preco, 2)
     return matriz
 
 def calcValorTotal(preco_unitario, quantidade):
     return preco_unitario * quantidade
 
-def calcmaiorPreco(matriz_precos):
+def calcmaiorPreco(mat):
     maior_preco = 0
-    for linha in matriz_precos:
-        for preco in linha:
+    for i in range(1, 10):
+        for j in range(1, 10):
+            preco = mat[i][j]
             if preco > maior_preco:
                 maior_preco = preco
     return maior_preco
+
+import random
 
